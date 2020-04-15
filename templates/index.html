@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  
+<!-- start import styles -->
+  <!-- import bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- import css --> 
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+<!-- end import styles -->
+
+<!-- start import libraries -->
+  <!-- import chart.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <!-- import plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- import d3 library -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+<!-- end import libraries -->
+
+<body>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h2>United States Population Data</h2>
+        <p>Use the interactive charts below to explore the dataset</p>
+      </div>
+    </div>
+
+    <!-- start plot placeholder-->
+    <div class="row">
+      <div class="col-md-12">
+        <div id="plotly-div"></div>
+      </div>
+    </div>
+    <!-- end bubble chart -->
+  </div>
+
+  <!-- import javascript code -->
+  <script type="text/javascript" src="static/js/app.js"></script>
+
+  
+</body>
+
+</html>
