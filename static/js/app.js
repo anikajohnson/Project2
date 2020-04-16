@@ -1,5 +1,6 @@
 console.log("Loaded app.js")
 
+/////// test code from pop pyramid //////////
 var trace1 = {
     name: 'Male', 
     type: 'bar', 
