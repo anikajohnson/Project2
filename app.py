@@ -244,6 +244,9 @@ def QueryAgePopulation():
 
 #     # Return the jsonified result. 
      return jsonify(age_population)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 # This statement is required for Flask to do its job. 

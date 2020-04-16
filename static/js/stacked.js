@@ -60,55 +60,5 @@ d3.json("/age_stacked_area_data").then(function(data) {
 //   labels: response.labels.split(','),
 //   datasets: mydatasets
 // }
-// var options = {
-//   scales: { 
-//    yAxes: [{
-//       ticks: {
-//              beginAtZero: true
-//            },
-//       scaleLabel: {
-//              display: true,
-//              labelString: 'Subject Perfomance',
-//              fontSize: 14
-//            }
-//   }]
-//  }
-// };
-// var studentsMarksPerformance = new Chart(markschart, {
-//       type: "line",
-//       data: subjectsData ,
-//       options: options
-// });
 
-
-
-    // keys = Object.keys(data);
-    // values = Object.values(data);
-
-    // // create the trace
-    // var trace = {
-    //     x: keys,
-    //     y: values,
-    //     type: "line"
-    // };
-
-    // // put the trace into an array
-    // var data = [trace];
-
-    // // defines the layout object
-    // var layout = {
-    //     title: "working age dependency ratio",
-    //     xaxis: { title: "Year"},
-    //     yaxis: { title: "Count"}
-    // };
-
-    // // make the plot
-    // Plotly.newPlot("stacked-area", data, layout);
-
-
-    // // make the year selection function / event handler?
-    // d3.selectAll("button").on("click", function() {
-    //     // create year selection function
-    //     console.log(this);
-    // });
 // });
