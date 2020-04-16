@@ -178,7 +178,7 @@ def QueryAgeRatioPopulation():
     #results = session.query(table.country, table.iso3, table.totalpopulation).all()
     ###########
 
-    results = session.query(age_ratio_population.Year,
+    results = session.query(age_ratio_population.year,
                             age_ratio_population.r_15_year_olds,
                             age_ratio_population.r_20_year_olds,
                             age_ratio_population.r_30_year_olds,
@@ -192,9 +192,9 @@ def QueryAgeRatioPopulation():
     session.close 
 
     age_ratio_pop = []
-    for Year, r_15_year_olds, r_20_year_olds, r_30_year_olds, r_40_year_olds, r_50_year_olds, r_60_year_olds, r_70_year_olds, r_80_year_olds, r_90_year_olds, r_100_year_olds in results:
+    for year, r_15_year_olds, r_20_year_olds, r_30_year_olds, r_40_year_olds, r_50_year_olds, r_60_year_olds, r_70_year_olds, r_80_year_olds, r_90_year_olds, r_100_year_olds in results:
         dict = {}
-        dict["Year"] = Year
+        dict["Year"] = year
         dict["15-year-olds"] =r_15_year_olds
         dict["20-year-olds"] = r_20_year_olds
         dict["30-year-olds"] = r_30_year_olds

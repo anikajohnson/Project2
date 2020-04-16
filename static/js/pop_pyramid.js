@@ -158,7 +158,7 @@ d3.json("/pop_pyramid_data").then(function (err, data) {
   };
 
   // Create the plot:
-  Plotly.newPlot('Plotly-div', {
+  Plotly.newPlot('pop-pyramid', {
     data: traces,
     layout: layout,
     frames: frames,
