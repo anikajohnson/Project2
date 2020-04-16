@@ -33,8 +33,6 @@ base = automap_base()
 base.prepare(engine, reflect=True)
 
 # Save reference to the table
-### update table name
-#table = base.classes.tablename
 un_sex_population = base.classes.un_sex_population
 young_to_elder = base.classes.young_to_elder
 age_ratio_population = base.classes.age_ratio_population
@@ -63,9 +61,7 @@ def QuerySexPopulation():
 
     # Open a session, run the query, and then close the session again
     session = Session(engine)
-    #### EXAMPLE RESULTS QUERY BELOW
-    #results = session.query(table.country, table.iso3, table.totalpopulation).all()
-    ###########
+
     results = session.query(un_sex_population.Year,
                             un_sex_population.Sex,
                             un_sex_population.r_0_4, 
@@ -91,20 +87,6 @@ def QuerySexPopulation():
                             un_sex_population.r_100_105).all()
     session.close 
 
-    ###########
-    #EXAMPLE DIC LIST BELOW
-    ###########
-
-    # Create a list of dictionaries, with each dictionary containing one row from the query. 
-    # all_population = []
-    # for country, iso3, totalpopulation in results:
-    #     dict = {}
-    #     dict["country"] = country
-    #     dict["iso3"] = iso3
-    #     dict["totalpopulation"] = totalpopulation
-    #     all_population.append(dict)
-
-    ###########
     sex_population = []
     for Year, Sex, r_0_4, r_5_9, r_10_14, r_15_19, r_20_24, r_25_29, r_30_34, r_35_39, r_40_44, r_45_49, r_50_54, r_55_59, r_60_64, r_65_69, r_70_74, r_75_79, r_80_84, r_85_89, r_90_94, r_95_99, r_100_105 in results:
         dict = {}
@@ -133,7 +115,6 @@ def QuerySexPopulation():
         dict["95-99"] = r_95_99
         dict["100-105"] = r_100_105
       
-<<<<<<< Updated upstream
         sex_population.append(dict)
 
     # Return the jsonified result. 
@@ -145,9 +126,7 @@ def QueryAgePopulation():
 
     # Open a session, run the query, and then close the session again
     session = Session(engine)
-    #### EXAMPLE RESULTS QUERY BELOW
-    #results = session.query(table.country, table.iso3, table.totalpopulation).all()
-    ###########
+
 
     results = session.query(young_to_elder.Country, 
                             young_to_elder.Year, 
@@ -195,8 +174,8 @@ def QueryAgeRatioPopulation():
     age_ratio_pop = []
     for year, r_15_year_olds, r_20_year_olds, r_30_year_olds, r_40_year_olds, r_50_year_olds, r_60_year_olds, r_70_year_olds, r_80_year_olds, r_90_year_olds, r_100_year_olds in results:
         dict = {}
-        dict["Year"] = year
-        dict["15-year-olds"] =r_15_year_olds
+        dict["year"] = year
+        dict["15-year-olds"] = r_15_year_olds
         dict["20-year-olds"] = r_20_year_olds
         dict["30-year-olds"] = r_30_year_olds
         dict["40-year-olds"] = r_40_year_olds
@@ -210,44 +189,6 @@ def QueryAgeRatioPopulation():
 
     # Return the jsonified result. 
     return jsonify(age_ratio_pop)
-=======
-#         sex_population.append(dict)
-
-#     # Return the jsonified result. 
-#     return jsonify(sex_population)
-
-@app.route("/age_stacked_area_data")
-def QueryAgePopulation():
-     ''' Query the database for population numbers and return the results as a JSON. '''
-
-     # Open a session, run the query, and then close the session again
-     session = Session(engine)
-     #### EXAMPLE RESULTS QUERY BELOW
-     #results = session.query(table.country, table.iso3, table.totalpopulation).all()
-     ###########
-
-     results = session.query(young_to_elder.Country, 
-                             young_to_elder.Year, 
-                             young_to_elder.Young, 
-                             young_to_elder.Working_Age, 
-                             young_to_elder.Elder).all()
-     session.close 
-
-     age_population = []
-     for Country, Year, Young, Working_Age, Elder in results:
-         dict = {}
-         dict["Country"] = Country
-         dict["Young"] = Young
-         dict["Working_Age"] = Working_Age
-         dict["Elder"] = Elder
-         age_population.append(dict)
-
-#     # Return the jsonified result. 
-     return jsonify(age_population)
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 # This statement is required for Flask to do its job. 
 # Think of it as chocolate cake recipe. 

@@ -9,7 +9,7 @@ create table young_to_elder (
 
 CREATE TABLE un_sex_population (
 index INT PRIMARY KEY not null,
-    Year TEXT,
+    year TEXT,
     r_0_4 int,
     r_5_9 int,
     r_10_14 int,
