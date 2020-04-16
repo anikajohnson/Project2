@@ -128,21 +128,21 @@ def QueryAgePopulation():
     session = Session(engine)
 
 
-    results = session.query(young_to_elder.Country, 
-                            young_to_elder.Year, 
-                            young_to_elder.Young, 
-                            young_to_elder.Working_Age, 
-                            young_to_elder.Elder).all()
+    results = session.query(young_to_elder.country, 
+                            young_to_elder.year, 
+                            young_to_elder.young, 
+                            young_to_elder.working_age, 
+                            young_to_elder.elder).all()
     session.close 
 
     age_population = []
-    for Country, Year, Young, Working_Age, Elder in results:
+    for country, year, young, working_age, elder in results:
         dict = {}
-        dict["Country"] = Country
-        dict["Year"] = Year
-        dict["Young"] = Young
-        dict["Working_Age"] = Working_Age
-        dict["Elder"] = Elder
+        dict["country"] = country
+        dict["year"] = year
+        dict["young"] = young
+        dict["working_age"] = working_age
+        dict["elder"] = elder
         age_population.append(dict)
 
     # Return the jsonified result. 
