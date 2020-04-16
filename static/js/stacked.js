@@ -5,66 +5,110 @@ console.log("loaded stacked.js");
 d3.json("/age_stacked_area_data").then(function(data) {
     // inspect the JSON
     console.log(data);
-
+    
     function filteredAgeRange(young) {
-        return young.year = 1950;
+        return young.year > 1949;
     }
 
-    var filteredAges = 
-    // need to get loop through the dictionary to create arrays
-    var yearStart = 1950;
-    var yearEnd = 2015
-    var array = [];
-    // I need 3 value sets though - how does that happen?
-    for (var i = yearStart; i <- yearEnd; i++) {
-        array.push(i);
-    };
+    // use the filter to pass the fx as its argument
+    var filteredAges = youngAges.filter(filteredAgeRange);
+    
+    // make sure it's filtering
+    console.log(filteredAgeRange);
 
-    keys = Object.keys(data);
-    values = Object.values(data);
+    // use map method and arrow function to return all the counts for the filtered ages
+    var ages = filteredAges.map(year => year.young);
+
+    // check results
+    console.log(young);
 
     // create the trace
     var trace = {
-        x: keys,
-        y: values,
-        type: "line"
+        x: filteredAges,
+        y: ages,
+        type: "area"
     };
 
-    // put the trace into an array
+    // do I need to create a loop to also make a trace for each year, so I can plot 
+
+    // create the data array for the plot
     var data = [trace];
+    //var data = [trace1, trace2, trace3]
 
-    // defines the layout object
+    // define the layout for the plot
     var layout = {
-        title: "working age dependency ratio",
-        xaxis: { title: "Year"},
-        yaxis: { title: "Count"}
+        title: "Testing 1950",
+        xaxis: { title: "Young years"},
+        yaxis: { title: "count of people in this category"}
     };
 
-    // make the plot
-    Plotly.newPlot("stacked-area", data, layout);
+    // plot to a div tag with id "stacked-area"
+    Plotly.newPlot("area", data, layout);
 
 
-    // make the year selection function / event handler?
-    d3.selectAll("button").on("click", function() {
-        // create year selection function
-        console.log(this);
-    });
-});
-// // Stub - test to confirm 
-// function DrawStacked(yearId)
-// {
-//     // name of function and parameter called
-//     console.log(`Calling DrawStacked(${yearId})`);
+    // I know I need multiple traces though, and they need to be built
+    // for(var j = 0; j < response.data.length; j++)
     
-//     // call data
-//     d3.json("age_population").then((data) => {
-//         // define data
-//         var years = data.years;
-//         // filter data to match year
-//         var resultArray = years.filter(s => s.id == yearId);
-//         // take first result
-//         var result = resultArray[0];
-//         // get variables
-//         var year_ids = result.year_ids;
-//         var age_labels = result.age_labels;
-//         var count_values = result.count_values;
+;
+// will this sample work?
+// var mydatasets = [];
+// var colorslist = ["blue","orange","magenta","green","syrup","navy","bumblebee","turkish","army","ferrari"];
+// for(var j = 0; j < response.datasets.length; j++) {
+//   mydatasets.push({label: response.datasets[j].label, boderColor: colorslist[j], data: response.datasets[j].data.splits(','), spanGraphs: true});
+// }
+// var subjectsData = {
+//   labels: response.labels.split(','),
+//   datasets: mydatasets
+// }
+// var options = {
+//   scales: { 
+//    yAxes: [{
+//       ticks: {
+//              beginAtZero: true
+//            },
+//       scaleLabel: {
+//              display: true,
+//              labelString: 'Subject Perfomance',
+//              fontSize: 14
+//            }
+//   }]
+//  }
+// };
+// var studentsMarksPerformance = new Chart(markschart, {
+//       type: "line",
+//       data: subjectsData ,
+//       options: options
+// });
+
+
+
+    // keys = Object.keys(data);
+    // values = Object.values(data);
+
+    // // create the trace
+    // var trace = {
+    //     x: keys,
+    //     y: values,
+    //     type: "line"
+    // };
+
+    // // put the trace into an array
+    // var data = [trace];
+
+    // // defines the layout object
+    // var layout = {
+    //     title: "working age dependency ratio",
+    //     xaxis: { title: "Year"},
+    //     yaxis: { title: "Count"}
+    // };
+
+    // // make the plot
+    // Plotly.newPlot("stacked-area", data, layout);
+
+
+    // // make the year selection function / event handler?
+    // d3.selectAll("button").on("click", function() {
+    //     // create year selection function
+    //     console.log(this);
+    // });
+// });
