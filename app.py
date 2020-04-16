@@ -37,7 +37,7 @@ base.prepare(engine, reflect=True)
 #table = base.classes.tablename
 un_sex_population = base.classes.un_sex_population
 young_to_elder = base.classes.young_to_elder
-
+age_ratio_population = base.classes.age_ratio_population
 # Flask Setup
 # Instantiate the Flask application
 app = Flask(__name__)
@@ -167,6 +167,48 @@ def QueryAgePopulation():
 
     # Return the jsonified result. 
     return jsonify(age_population)
+
+@app.route("/age_ratio_scatter_data")
+def QueryAgeRatioPopulation():
+    ''' Query the database for population numbers and return the results as a JSON. '''
+
+    # Open a session, run the query, and then close the session again
+    session = Session(engine)
+    #### EXAMPLE RESULTS QUERY BELOW
+    #results = session.query(table.country, table.iso3, table.totalpopulation).all()
+    ###########
+
+    results = session.query(age_ratio_population.Year,
+                            age_ratio_population.r_15_year_olds,
+                            age_ratio_population.r_20_year_olds,
+                            age_ratio_population.r_30_year_olds,
+                            age_ratio_population.r_40_year_olds,
+                            age_ratio_population.r_50_year_olds,
+                            age_ratio_population.r_60_year_olds,
+                            age_ratio_population.r_70_year_olds,
+                            age_ratio_population.r_80_year_olds,
+                            age_ratio_population.r_90_year_olds,
+                            age_ratio_population.r_100_year_olds).all()
+    session.close 
+
+    age_ratio_pop = []
+    for Year, r_15_year_olds, r_20_year_olds, r_30_year_olds, r_40_year_olds, r_50_year_olds, r_60_year_olds, r_70_year_olds, r_80_year_olds, r_90_year_olds, r_100_year_olds in results:
+        dict = {}
+        dict["Year"] = Year
+        dict["15-year-olds"] =r_15_year_olds
+        dict["20-year-olds"] = r_20_year_olds
+        dict["30-year-olds"] = r_30_year_olds
+        dict["40-year-olds"] = r_40_year_olds
+        dict["50-year-olds"] = r_50_year_olds
+        dict["60-year-olds"] = r_60_year_olds
+        dict["70-year-olds"] = r_70_year_olds
+        dict["80-year-olds"] = r_80_year_olds
+        dict["90-year-olds"] = r_90_year_olds
+        dict["100-year-olds"] = r_100_year_olds
+        age_ratio_pop.append(dict)
+
+    # Return the jsonified result. 
+    return jsonify(age_ratio_pop)
 
 # This statement is required for Flask to do its job. 
 # Think of it as chocolate cake recipe. 
