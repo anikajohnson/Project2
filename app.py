@@ -133,6 +133,7 @@ def QuerySexPopulation():
         dict["95-99"] = r_95_99
         dict["100-105"] = r_100_105
       
+<<<<<<< Updated upstream
         sex_population.append(dict)
 
     # Return the jsonified result. 
@@ -209,6 +210,44 @@ def QueryAgeRatioPopulation():
 
     # Return the jsonified result. 
     return jsonify(age_ratio_pop)
+=======
+#         sex_population.append(dict)
+
+#     # Return the jsonified result. 
+#     return jsonify(sex_population)
+
+@app.route("/age_stacked_area_data")
+def QueryAgePopulation():
+     ''' Query the database for population numbers and return the results as a JSON. '''
+
+     # Open a session, run the query, and then close the session again
+     session = Session(engine)
+     #### EXAMPLE RESULTS QUERY BELOW
+     #results = session.query(table.country, table.iso3, table.totalpopulation).all()
+     ###########
+
+     results = session.query(young_to_elder.Country, 
+                             young_to_elder.Year, 
+                             young_to_elder.Young, 
+                             young_to_elder.Working_Age, 
+                             young_to_elder.Elder).all()
+     session.close 
+
+     age_population = []
+     for Country, Year, Young, Working_Age, Elder in results:
+         dict = {}
+         dict["Country"] = Country
+         dict["Young"] = Young
+         dict["Working_Age"] = Working_Age
+         dict["Elder"] = Elder
+         age_population.append(dict)
+
+#     # Return the jsonified result. 
+     return jsonify(age_population)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
 # This statement is required for Flask to do its job. 
 # Think of it as chocolate cake recipe. 
