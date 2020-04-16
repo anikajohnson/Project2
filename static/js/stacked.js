@@ -6,6 +6,11 @@ d3.json("/age_stacked_area_data").then(function(data) {
     // inspect the JSON
     console.log(data);
 
+    function filteredAgeRange(young) {
+        return young.year = 1950;
+    }
+
+    var filteredAges = 
     // need to get loop through the dictionary to create arrays
     var yearStart = 1950;
     var yearEnd = 2015
