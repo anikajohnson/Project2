@@ -5,7 +5,7 @@ d3.json("/pop_pyramid_data").then(function (data) {
 
   //var mendata = data.filter(d => d.sex == "Male")
   var x = 0
-
+// 0 + x driven by slider bar
   var mendata = data[x];
   var womendata = data[15];
 
@@ -74,12 +74,7 @@ data = [trace1, trace2];
       autorange: true
     }, 
 
-    // yaxis: {
-    //   type: 'linear', 
-    //   range: [-5, 105], 
-    //   title: {text: 'Age'}, 
-    //   autorange: true
-    // }, 
+
     bargap: 0.1, 
     barmode: 'relative', 
     autosize: true
