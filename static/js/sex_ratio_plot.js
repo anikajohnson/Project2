@@ -21,10 +21,15 @@ var r_80_year_olds = Object.values(data[8])
 var r_90_year_olds = Object.values(data[9])
 
 
+
+
+
 const minYear = "1950"
 const maxYear = "2015"
 for (i = minYear; i < maxYear; i++){
-  thatYear = data.filtered(d => d.Year === i);
+  var thatYear = data.filtered(d => d.Year === i);
+  
+  
   console.log("thatYear:", thatYear);
   console.log(r_100_year_olds)
 }

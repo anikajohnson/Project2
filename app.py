@@ -39,6 +39,7 @@ age_ratio_population = base.classes.age_ratio_population
 # Flask Setup
 # Instantiate the Flask application
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 
 ##### look into page caching
 # disable page caching
@@ -62,8 +63,8 @@ def QuerySexPopulation():
     # Open a session, run the query, and then close the session again
     session = Session(engine)
 
-    results = session.query(un_sex_population.Year,
-                            un_sex_population.Sex,
+    results = session.query(un_sex_population.year,
+                            un_sex_population.sex,
                             un_sex_population.r_0_4, 
                             un_sex_population.r_5_9,
                             un_sex_population.r_10_14,
@@ -88,11 +89,11 @@ def QuerySexPopulation():
     session.close 
 
     sex_population = []
-    for Year, Sex, r_0_4, r_5_9, r_10_14, r_15_19, r_20_24, r_25_29, r_30_34, r_35_39, r_40_44, r_45_49, r_50_54, r_55_59, r_60_64, r_65_69, r_70_74, r_75_79, r_80_84, r_85_89, r_90_94, r_95_99, r_100_105 in results:
+    for year, sex, r_0_4, r_5_9, r_10_14, r_15_19, r_20_24, r_25_29, r_30_34, r_35_39, r_40_44, r_45_49, r_50_54, r_55_59, r_60_64, r_65_69, r_70_74, r_75_79, r_80_84, r_85_89, r_90_94, r_95_99, r_100_105 in results:
         dict = {}
 
-        dict["Year"] = Year
-        dict["Sex"] = Sex
+        dict["year"] = year
+        dict["sex"] = sex
         dict["0-4"] = r_0_4
         dict["5-9"] = r_5_9 
         dict["10-14"] = r_10_14
