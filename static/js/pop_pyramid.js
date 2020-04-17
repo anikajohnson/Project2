@@ -1,11 +1,16 @@
 console.log("Loaded pop_pyramid.js");
 
+// starter templates
+// https://plotly.com/~etpinard/7625.js
+// https://plotly.com/javascript/gapminder-example/
+d3.json("/pop_pyramid_data").then(function (data1) {
 
-d3.json("/pop_pyramid_data").then(function (data) {
+  var data = data1;
+ // find a way to loop through and select dictionary places
+ // 0 + x driven by slider bar
 
-  //var mendata = data.filter(d => d.sex == "Male")
   var x = 0
-// 0 + x driven by slider bar
+
   var mendata = data[x];
   var womendata = data[15];
 
@@ -22,7 +27,7 @@ d3.json("/pop_pyramid_data").then(function (data) {
   var women_x_data_neg = women_x_data.map(x => -x);
 
 
-  trace1 = {
+  var trace1 = {
     uid: '9f2de8e2-01e2-44cf-9597-d8c9d17a223a', 
     meta: {columnNames: {
         x: 'Men, x', 
@@ -36,7 +41,7 @@ d3.json("/pop_pyramid_data").then(function (data) {
     hoverinfo: 'x', 
     orientation: 'h'
   };
-  trace2 = {
+  var trace2 = {
     uid: '31653fd0-228e-4932-88af-340740cd1dea', 
     meta: {columnNames: {
         x: 'Women, x', 
@@ -48,23 +53,23 @@ d3.json("/pop_pyramid_data").then(function (data) {
     x: women_x_data_neg, 
     y: women_y_data, 
     marker: {color: 'seagreen'},
-    hoverinfo: 'x', 
+    text: women_x_data,
+    hoverinfo: 'text', 
     orientation: 'h'
   };
 
  var tickers = ["0-4", "5-9", "10-14", "15-19", "20-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90-94", "95-99", "100-105"];
 
 
-//  data = [trace1];
-//   console.log(data)
-data = [trace1, trace2];
-  layout = {
+var data = [trace1, trace2];
+  var layout = {
+    title: "US Population Pyramid",
     xaxis: {
       type: 'linear', 
       range: [-15000, 15000], 
-      title: {text: 'Population Size'}, 
-      ticktext: [15000, 10000, 5000, 0, 5000, 10000, 15000], 
-      tickvals: [-15000, -10000, -5000, 0, 5000, 10000, 15000]
+      title: {text: 'Population Size (thousands)'}, 
+      ticktext: [15000, 12500, 10000, 7500, 5000, 2500, 0, 2500, 5000, 7500, 10000, 12500, 15000], 
+      tickvals: [-15000, -12500, -10000, -7500, -5000, -2500, 0, 2500, 5000, 7500, 10000, 12500, 15000]
     }, 
     yaxis: {
       type: 'ordinal', 
@@ -73,8 +78,6 @@ data = [trace1, trace2];
       //ticktext: [men_y_data],
       autorange: true
     }, 
-
-
     bargap: 0.1, 
     barmode: 'relative', 
     autosize: true
