@@ -58,7 +58,7 @@ d3.json("/age_ratio_scatter_data").then(function (data2) {
   var data = [age_15, age_20, age_30, age_40, age_50, age_60, age_70, age_80, age_90, age_100];
 
   var layout = {
-    title: "Male Life Expectancy Compared to Women by Age Group (1950-2015)",
+    title: "US Life Expectancy of Males Compared to Females (by Age Group)",
     showlegend: false,
     autosize: true,
     xaxis: {
