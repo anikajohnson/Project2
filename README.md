@@ -5,7 +5,7 @@
 <p>The project requirements were to create visualizations by integrating Flask with HTML and JavaScript code as well as a database. The final product must include at least one JavaScript library not covered in class, with a data set of at least 100 records and some level of user-driven interaction.</p>
 
 <p>
-We decided our broad topic to be US population over time. We chose this because of the abundant availability of a variety of measures. We ultimately used data from the United Nations and Our World In Data. Specifically, we used three data sets - one that shows the ratio of female births as measured per 100 male births over time, the size of three broad age groups over time, and the population counts by age group for makes and females over time.</p>
+We decided our broad topic to be US population over time. We chose this because of the abundant availability of a variety of measures. We ultimately used data from the United Nations and Our World In Data. Specifically, we used three data sets - one that shows the ratio of male births as measured per 100 female births over time, the size of three broad age groups over time, and the population counts by age group for males and females over time.</p>
 <ol><b>Step One: The Data</b>
 <li>We downloaded data in .CSV format from our sources
 <li>We read the data into dataframes, filtered the records for United States only then massaged the format and names
@@ -26,10 +26,11 @@ We decided our broad topic to be US population over time. We chose this because 
 <b>Step Three: The Final Product</b><br>
 To recreate our dashboard complete the below steps:
   <ol>
-  <li>Clone the repo
-  <li>Create the database tables
-  <li>Run the Jupyter Notebooks to load the data to the databases
-  <li>Navigate to the folder that contains app.py and launch a GitBash or Terminal
+  <li>Clone the repo to your desktop.
+  <li>Open PgAdmin and create a new database called "Population".
+  <li>Use the Query tool to open the "pop_data.sql" file and run the code to create the database tables.
+  <li>Run the Jupyter Notebooks to load the data to the databases.
+  <li>Navigate to the folder that contains app.py and launch a GitBash or Terminal.
   <li>Type <code>source activate PythonData</code>
   <li>Type <code>export FLASK_APP=app.py</code>
   <li>Type <code>flask run</code> and keep that window open
