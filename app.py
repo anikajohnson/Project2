@@ -54,7 +54,8 @@ def IndexRoute():
     data = QueryAgePopulation()
     data1 = QuerySexPopulation()
     data2 = QueryAgeRatioPopulation()
-    webpage = render_template("index.html")
+    #webpage = render_template("index.html")
+    webpage = render_template("index.html", data=data)
     return webpage
 
 # route to query database for population pyramid 
