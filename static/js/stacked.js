@@ -31,7 +31,7 @@ d3.json("/age_stacked_area_data").then(function(data) {
     var traces = [
 	{x: yearArray, y: youngArray, stackgroup: 'one', groupnorm:'percent', name: 'Ages birth to 14'},
 	{x: yearArray, y: workingArray, stackgroup: 'one', name: 'Ages 15 to 64'},
-	{x: yearArray, y: elderArray, stackgroup: 'one', name: 'Ages 65 and greater'}
+	{x: yearArray, y: elderArray, stackgroup: 'one', name: 'Ages 65 and better'}
     ];
 
 Plotly.newPlot('age-stacked-area', traces, {title: 'United States Population Percentages by Broad Age Group'});
