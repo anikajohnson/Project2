@@ -26,33 +26,49 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h2>United States Population Data (1950-2015)</h2>
+        <h2 class="display-4">United States Population Data</h2>
+        <h4>(1950-2015)</h4>
+        <hr class="my-4">
         <p>Explore the dataset below</p>
       </div>
     </div>
 
     <!-- start plot divs-->
     <div class="row">
-      <div class="col-md-12">
-        <h5>Year:</h5>
-        <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        <div id="pop-pyramid"></div>
-      </div>
+      <hr class="my-4">
+      <h3>Age Distribution by Sex</h3>
+      <hr class="my-4">
+      <h4>Year:</h4>
+      <select id="selDataset" onchange="optionChanged(this.value)"></select>
+      <div id="pop-pyramid"></div>
     </div>
 
-
     <div class="row">
+      <hr class="my-4">
+      <h3>Age Structure</h3>
+      <hr class="my-4">
       <div class="col-md-12">
         <div id="age-stacked-area"></div>
       </div>
     </div>
-   
+    
     <div class="row">
+      <hr class="my-4">
+      <h3>Sex Ratio by Age</h3>
+      <hr class="my-4">
       <div class="col-md-12">
         <div id="sex-ratio-scatterplot"></div>
       </div>
     </div>
 
+    <div class="row">
+      <hr class="my-4">
+      <h3>Data Sources</h3>
+      <hr class="my-4">
+      <div class="col-md-12">
+        <p>We decided our broad topic to be US population over time. We chose this because of the abundant availability of a variety of measures. We ultimately used data from the United Nations and Our World In Data. Specifically, we used three data sets - one that shows the ratio of male births as measured per 100 female births over time, the size of three broad age groups over time, and the population counts by age group for males and females over time.<p/>
+      </div>
+    </div>
   </div>
     <!-- end plot divs -->
 
