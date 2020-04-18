@@ -1,3 +1,4 @@
+
 // show that the JS file was loaded
 console.log("loaded stacked.js");
 
@@ -5,60 +6,33 @@ console.log("loaded stacked.js");
 d3.json("/age_stacked_area_data").then(function(data) {
     // inspect the JSON
     console.log(data);
-    
-    function filteredAgeRange(young) {
-        return young.year > 1949;
-    }
 
-    // use the filter to pass the fx as its argument
-    var filteredAges = youngAges.filter(filteredAgeRange);
-    
-    // make sure it's filtering
-    console.log(filteredAgeRange);
+//https://plotly.com/javascript/filled-area-plots/
+//   var txt = "";
+  var yearArray = []; 
+  var youngArray = [];
+  var workingArray = [];
+  var elderArray = [];
+  
+  yearArray = data.map(x => x.year);
+  console.log(yearArray);
 
-    // use map method and arrow function to return all the counts for the filtered ages
-    var ages = filteredAges.map(year => year.young);
+  youngArray = data.map(x => x.young);
+  console.log(youngArray);
 
-    // check results
-    console.log(young);
+  workingArray = data.map(x => x.working_age);
+  console.log(workingArray);
 
-    // create the trace
-    var trace = {
-        x: filteredAges,
-        y: ages,
-        type: "area"
-    };
+  elderArray = data.map(x => x.elder);
+  console.log(elderArray);
 
-    // do I need to create a loop to also make a trace for each year, so I can plot 
+  // plot on the html in the right Div
+  var plotDiv = document.getElementById('age-stacked-area');
+    var traces = [
+	{x: yearArray, y: youngArray, stackgroup: 'one', groupnorm:'percent', name: 'Ages birth to 14'},
+	{x: yearArray, y: workingArray, stackgroup: 'one', name: 'Ages 15 to 64'},
+	{x: yearArray, y: elderArray, stackgroup: 'one', name: 'Ages 65 and better'}
+    ];
 
-    // create the data array for the plot
-    var data = [trace];
-    //var data = [trace1, trace2, trace3]
-
-    // define the layout for the plot
-    var layout = {
-        title: "Testing 1950",
-        xaxis: { title: "Young years"},
-        yaxis: { title: "count of people in this category"}
-    };
-
-    // plot to a div tag with id "stacked-area"
-    Plotly.newPlot("area", data, layout);
-
-
-    // I know I need multiple traces though, and they need to be built
-    // for(var j = 0; j < response.data.length; j++)
-    
-;
-// will this sample work?
-// var mydatasets = [];
-// var colorslist = ["blue","orange","magenta","green","syrup","navy","bumblebee","turkish","army","ferrari"];
-// for(var j = 0; j < response.datasets.length; j++) {
-//   mydatasets.push({label: response.datasets[j].label, boderColor: colorslist[j], data: response.datasets[j].data.splits(','), spanGraphs: true});
-// }
-// var subjectsData = {
-//   labels: response.labels.split(','),
-//   datasets: mydatasets
-// }
-
+Plotly.newPlot('age-stacked-area', traces, {title: 'United States Population Percentages by Broad Age Group'});
 });

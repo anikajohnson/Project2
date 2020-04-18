@@ -51,8 +51,8 @@ app.config['JSON_SORT_KEYS'] = False
 def IndexRoute():
     ''' This function runs when the browser loads the index route. 
         Note that the html file must be located in a folder called templates. '''
-
-    webpage = render_template("index.html")
+    data = QueryAgePopulation()
+    webpage = render_template("index.html", data=data)
     return webpage
 
 # route to query database for population pyramid 
