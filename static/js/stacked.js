@@ -29,10 +29,10 @@ d3.json("/age_stacked_area_data").then(function(data) {
   // plot on the html in the right Div
   var plotDiv = document.getElementById('age-stacked-area');
     var traces = [
-	{x: yearArray, y: youngArray, stackgroup: 'one', groupnorm:'percent'},
-	{x: yearArray, y: workingArray, stackgroup: 'one'},
-	{x: yearArray, y: elderArray, stackgroup: 'one'}
+	{x: yearArray, y: youngArray, stackgroup: 'one', groupnorm:'percent', name: 'Ages birth to 14'},
+	{x: yearArray, y: workingArray, stackgroup: 'one', name: 'Ages 15 to 64'},
+	{x: yearArray, y: elderArray, stackgroup: 'one', name: 'Ages 65 and greater'}
     ];
 
-Plotly.newPlot('age-stacked-area', traces, {title: 'Normalized stacked and filled line chart'});
+Plotly.newPlot('age-stacked-area', traces, {title: 'United States Population Percentages by Broad Age Group'});
 });
