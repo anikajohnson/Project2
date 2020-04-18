@@ -23,27 +23,23 @@
 
 <body>
 
-
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
         <h2>United States Population Data</h2>
-        <p>Use the interactive charts below to explore the dataset</p>
+        <p>Explore the dataset below</p>
       </div>
     </div>
 
     <!-- start plot divs-->
-    
     <div class="row">
       <div class="col-md-12">
-        <div id="app.js-example-plot-div"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
+        <h5>Year:</h5>
+        <select id="selDataset" onchange="optionChanged(this.value)"></select>
         <div id="pop-pyramid"></div>
       </div>
     </div>
+
 
     <div class="row">
       <div class="col-md-12">
@@ -56,15 +52,9 @@
         <div id="sex-ratio-scatterplot"></div>
       </div>
     </div>
-    <!-- end plot divs -->
+
   </div>
-  <h2>Call the following routes:</h2>
-  <ul>
-      <li>/</li>
-      <li>/age_stacked_area_data</li>
-      <li></li>
-  </ul>
-  <button id="year">Select the year</button>
+    <!-- end plot divs -->
 
   <!-- import javascript code -->
   <!-- <script type="text/javascript" src="static/js/app.js"></script> -->

@@ -52,6 +52,9 @@ def IndexRoute():
     ''' This function runs when the browser loads the index route. 
         Note that the html file must be located in a folder called templates. '''
     data = QueryAgePopulation()
+    data1 = QuerySexPopulation()
+    data2 = QueryAgeRatioPopulation()
+    #webpage = render_template("index.html")
     webpage = render_template("index.html", data=data)
     return webpage
 
@@ -176,16 +179,16 @@ def QueryAgeRatioPopulation():
     for year, r_15_year_olds, r_20_year_olds, r_30_year_olds, r_40_year_olds, r_50_year_olds, r_60_year_olds, r_70_year_olds, r_80_year_olds, r_90_year_olds, r_100_year_olds in results:
         dict = {}
         dict["year"] = year
-        dict["15-year-olds"] = r_15_year_olds
-        dict["20-year-olds"] = r_20_year_olds
-        dict["30-year-olds"] = r_30_year_olds
-        dict["40-year-olds"] = r_40_year_olds
-        dict["50-year-olds"] = r_50_year_olds
-        dict["60-year-olds"] = r_60_year_olds
-        dict["70-year-olds"] = r_70_year_olds
-        dict["80-year-olds"] = r_80_year_olds
-        dict["90-year-olds"] = r_90_year_olds
-        dict["100-year-olds"] = r_100_year_olds
+        dict["r_15_year_olds"] = r_15_year_olds
+        dict["r_20_year_olds"] = r_20_year_olds
+        dict["r_30_year_olds"] = r_30_year_olds
+        dict["r_40_year_olds"] = r_40_year_olds
+        dict["r_50_year_olds"] = r_50_year_olds
+        dict["r_60_year_olds"] = r_60_year_olds
+        dict["r_70_year_olds"] = r_70_year_olds
+        dict["r_80_year_olds"] = r_80_year_olds
+        dict["r_90_year_olds"] = r_90_year_olds
+        dict["r_100_year_olds"] = r_100_year_olds
         age_ratio_pop.append(dict)
 
     # Return the jsonified result. 
